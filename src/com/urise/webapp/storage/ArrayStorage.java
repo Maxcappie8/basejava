@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class ArrayStorage {
 
     private int size = 0;
-    private Resume[] storage = new Resume[4];
+    private Resume[] storage = new Resume[10000];
 
     public void clear() {
         Arrays.fill(storage, 0, size, null);
