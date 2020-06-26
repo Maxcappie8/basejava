@@ -57,7 +57,6 @@ public class MainArray {
                 case "update":
                     r = new Resume();
                     r.setUuid(uuid);
-                    r.setVerson(2);
                     ARRAY_STORAGE.update(r);
                     printAll();
                     break;

@@ -26,10 +26,7 @@ public class MainTestArrayStorage {
         System.out.println("Get dummy: " + ARRAY_STORAGE.get("dummy"));
 
         printAll();
-        System.out.println(r1.getVerson());
-        r1.setVerson(2);
         ARRAY_STORAGE.update(r1);
-        System.out.println(r1.getVerson());
         printAll();
         ARRAY_STORAGE.delete(r1.getUuid());
         printAll();
