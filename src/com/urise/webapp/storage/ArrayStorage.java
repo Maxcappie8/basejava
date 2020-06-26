@@ -17,9 +17,10 @@ public class ArrayStorage {
     }
 
     public void save(Resume resume) {
-        if (size < storage.length && findResumesIndexInStorage(resume.getUuid()) == size) {
+        int targetResumesIndex = findResumesIndexInStorage(resume.getUuid());
+        if (size < storage.length && targetResumesIndex == size) {
             storage[size++] = resume;
-        } else if (findResumesIndexInStorage(resume.getUuid()) < size) {
+        } else if (targetResumesIndex < size) {
             System.out.println("[INFO] Resume " + resume.getUuid() + " already exists.");
         } else {
             System.out.println("[INFO] Storage is full.");
