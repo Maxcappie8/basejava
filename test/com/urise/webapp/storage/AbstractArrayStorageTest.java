@@ -64,7 +64,6 @@ public class AbstractArrayStorageTest {
             Assert.fail();
         }
         storage.save(new Resume(UUID_4));
-
     }
 
     @Test
