@@ -2,13 +2,11 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
-import java.util.Arrays;
-
-public class SortedArrayStorage extends AbstractArrayStorage {
+public class MapStorage extends AbstractStorage {
 
     @Override
-    protected Integer getKey(String uuid) {
-        return Arrays.binarySearch(storage, 0, size, new Resume(uuid));
+    protected Object getKey(String uuid) {
+        return null;
     }
 
     @Override
@@ -42,14 +40,17 @@ public class SortedArrayStorage extends AbstractArrayStorage {
     }
 
     @Override
-    protected void insertResume(Resume resume, int index) {
-        int fromIndex = -index - 1;
-        System.arraycopy(storage, fromIndex, storage, fromIndex + 1, size - fromIndex);
-        storage[fromIndex] = resume;
+    public void clear() {
+
     }
 
     @Override
-    protected void deleteResume(int index) {
-        System.arraycopy(storage, index + 1, storage, index, size - index - 1);
+    public Resume[] getAll() {
+        return new Resume[0];
+    }
+
+    @Override
+    public int size() {
+        return 0;
     }
 }

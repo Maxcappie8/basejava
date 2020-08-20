@@ -6,15 +6,11 @@ import com.urise.webapp.exception.StorageException;
 import com.urise.webapp.model.Resume;
 import java.util.Arrays;
 
-public abstract class AbstractArrayStorage implements Storage {
+public abstract class AbstractArrayStorage extends AbstractStorage {
 
     protected static final int STORAGE_LIMIT = 10000;
     protected int size = 0;
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
-
-    public static int getStorageLimit() {
-        return STORAGE_LIMIT;
-    }
 
     @Override
     public void clear() {
@@ -24,7 +20,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     @Override
     public void save(Resume resume) {
-        int index = getIndex(resume.getUuid());
+        int index = getKey(resume.getUuid());
         if (size == STORAGE_LIMIT) {
             throw new StorageException("Storage overflow", resume.getUuid());
         } else if (index >= 0) {
@@ -37,7 +33,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     @Override
     public void update(Resume resume) {
-        int index = getIndex(resume.getUuid());
+        int index = getKey(resume.getUuid());
         if (index < 0) {
             throw new NotExistStorageException(resume.getUuid());
         } else {
@@ -47,7 +43,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     @Override
     public Resume get(String uuid) {
-        int index = getIndex(uuid);
+        int index = getKey(uuid);
         if (index < 0) {
             throw new NotExistStorageException(uuid);
         }
@@ -56,7 +52,7 @@ public abstract class AbstractArrayStorage implements Storage {
 
     @Override
     public void delete(String uuid) {
-        int index = getIndex(uuid);
+        int index = getKey(uuid);
         if (index < 0) {
             throw new NotExistStorageException(uuid);
         } else {
@@ -76,7 +72,7 @@ public abstract class AbstractArrayStorage implements Storage {
         return size;
     }
 
-    protected abstract int getIndex(String uuid);
+    protected abstract Integer getKey(String uuid);
 
     protected abstract void insertResume(Resume resume, int index);
 
