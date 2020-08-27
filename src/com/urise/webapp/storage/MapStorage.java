@@ -1,8 +1,12 @@
 package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapStorage extends AbstractStorage {
+
+    private Map<String, Resume> storage = new HashMap<>();
 
     @Override
     protected Object getKey(String uuid) {
@@ -11,7 +15,6 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void saveResume(Object key, Resume resume) {
-
     }
 
     @Override
@@ -26,16 +29,6 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void deleteResume(Object key) {
-
-    }
-
-    @Override
-    protected void checkNotExist(String uuid) {
-
-    }
-
-    @Override
-    protected void checkExist(String uuid) {
 
     }
 
