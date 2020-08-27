@@ -18,7 +18,8 @@ public abstract class AbstractArrayStorage extends AbstractStorage {
     }
 
     @Override
-    public void saveResume(Object key, Resume resume) {
+    public void save(Resume resume) {
+        int index = getIndex(resume.getUuid());
         if (size == STORAGE_LIMIT) {
             throw new StorageException("Storage overflow", resume.getUuid());
         }
