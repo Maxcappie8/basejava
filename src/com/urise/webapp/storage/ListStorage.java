@@ -1,6 +1,7 @@
 package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +25,6 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected Object getKey(String uuid) {
-        return storage.indexOf(new Resume(uuid));
-    }
-
-    @Override
     protected void saveResume(Object key, Resume resume) {
         storage.add(resume);
     }
@@ -45,6 +41,16 @@ public class ListStorage extends AbstractStorage {
 
     @Override
     protected void deleteResume(Object key) {
-        storage.remove(new Resume((String) key));
+        storage.remove((int) key);
+    }
+
+    @Override
+    protected boolean searchKey(Object key) {
+        return ((Integer) key >= 0);
+    }
+
+    @Override
+    protected Object getKey(String uuid) {
+        return storage.indexOf(new Resume(uuid));
     }
 }
