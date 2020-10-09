@@ -11,6 +11,7 @@ import java.io.InputStreamReader;
  * Interactive test for com.urise.webapp.storage.ArrayStorage implementation
  * (just run, no need to understand)
  */
+@Deprecated
 public class MainArray {
     private final static SortedArrayStorage ARRAY_STORAGE = new SortedArrayStorage();
 
@@ -36,7 +37,7 @@ public class MainArray {
                     System.out.println(ARRAY_STORAGE.size());
                     break;
                 case "save":
-                    r = new Resume();
+                    r = new Resume("a");
                     r.setUuid(uuid);
                     ARRAY_STORAGE.save(r);
                     printAll();
@@ -55,7 +56,7 @@ public class MainArray {
                 case "exit":
                     return;
                 case "update":
-                    r = new Resume();
+                    r = new Resume("a");
                     r.setUuid(uuid);
                     ARRAY_STORAGE.update(r);
                     printAll();
@@ -68,7 +69,7 @@ public class MainArray {
     }
 
     static void printAll() {
-        Resume[] all = ARRAY_STORAGE.getAll();
+        Resume[] all = ARRAY_STORAGE.getAllSorted().toArray(new Resume[0]);
         System.out.println("----------------------------");
         if (all.length == 0) {
             System.out.println("Empty");
