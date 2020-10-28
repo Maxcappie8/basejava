@@ -4,7 +4,7 @@ import com.urise.webapp.exception.ExistStorageException;
 import com.urise.webapp.exception.NotExistStorageException;
 import com.urise.webapp.model.Resume;
 
-public abstract class AbstractStorage implements Storage {
+public abstract class AbstractStorage<SK> implements Storage {
 
     @Override
     public void save(Resume resume) {
@@ -26,31 +26,31 @@ public abstract class AbstractStorage implements Storage {
         deleteResume(checkExist(uuid));
     }
 
-    private Object checkNotExist(String uuid) {
-        Object key = getKey(uuid);
+    private SK checkNotExist(String uuid) {
+        SK key = getKey(uuid);
         if (searchKey(key)) {
             throw new ExistStorageException(uuid);
         }
         return key;
     }
 
-    private Object checkExist(String uuid) {
-        Object key = getKey(uuid);
+    private SK checkExist(String uuid) {
+        SK key = getKey(uuid);
         if (!searchKey(key)) {
             throw new NotExistStorageException(uuid);
         }
         return key;
     }
 
-    protected abstract Object getKey(String uuid);
+    protected abstract SK getKey(String uuid);
 
-    protected abstract void saveResume(Object key, Resume resume);
+    protected abstract void saveResume(SK key, Resume resume);
 
-    protected abstract void updateResume(Object key, Resume resume);
+    protected abstract void updateResume(SK key, Resume resume);
 
-    protected abstract Resume getResume(Object key);
+    protected abstract Resume getResume(SK key);
 
-    protected abstract void deleteResume(Object key);
+    protected abstract void deleteResume(SK key);
 
-    protected abstract boolean searchKey(Object key);
+    protected abstract boolean searchKey(SK key);
 }
