@@ -1,4 +1,4 @@
-package com.urise.webapp.storage;
+package com.urise.webapp;
 
 import com.urise.webapp.model.*;
 
@@ -11,16 +11,16 @@ public class ResumeTestData {
     public static void main(String[] args) {
         Resume resume = new Resume("max");
 
-        resume.getContacts().put(ContactType.PHONE_MOBILE, new Contact("+7(921) 855-0482", null));
-        resume.getContacts().put(ContactType.SKYPE, new Contact("grigory.kislin", "skype:grigory.kislin"));
-        resume.getContacts().put(ContactType.EMAIL, new Contact("gkislin@yandex.ru", "gkislin@yandex.ru"));
-        resume.getContacts().put(ContactType.LINKEDIN, new Contact("Профиль LinkedIn", "https://www.linkedin.com/in/gkislin"));
+        resume.getContacts().put(ContactType.PHONE_MOBILE, new WebLink("+7(921) 855-0482", null));
+        resume.getContacts().put(ContactType.SKYPE, new WebLink("grigory.kislin", "skype:grigory.kislin"));
+        resume.getContacts().put(ContactType.EMAIL, new WebLink("gkislin@yandex.ru", "gkislin@yandex.ru"));
+        resume.getContacts().put(ContactType.LINKEDIN, new WebLink("Профиль LinkedIn", "https://www.linkedin.com/in/gkislin"));
 
 
-        WholeTextSection objective = new WholeTextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям");
+        TextSection objective = new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям");
         resume.getSections().put(SectionType.OBJECTIVE, objective);
 
-        WholeTextSection personal = new WholeTextSection("Аналитический склад ума, сильная логика, креативность, инициативность. Пурист кода и архитектуры.");
+        TextSection personal = new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. Пурист кода и архитектуры.");
         resume.getSections().put(SectionType.PERSONAL, personal);
 
         List<String> achievementList = new ArrayList<>();
@@ -47,7 +47,7 @@ public class ResumeTestData {
         qualificationsList.add("администрирование Hudson/Jenkins, Ant + custom task, SoapUI, JPublisher, Flyway, Nagios, iReport, OpenCmis, Bonita, pgBouncer.");
         qualificationsList.add("Отличное знание и опыт применения концепций ООП, SOA, шаблонов проектрирования, архитектурных шаблонов, UML, функционального программирования");
         qualificationsList.add("Родной русский, английский \"upper intermediate\"");
-        Section qualifications = new ListSection(qualificationsList);
+        AbstractSection qualifications = new ListSection(qualificationsList);
         resume.getSections().put(SectionType.QUALIFICATIONS, qualifications);
 
         List<Company> workList = new ArrayList<>();
@@ -83,7 +83,7 @@ public class ResumeTestData {
                 "Автор проекта",
                 "Создание, организация и проведение Java онлайн проектов и стажировок.");
         workList.add(javaops);
-        Section experience = new CompanySection(workList);
+        AbstractSection experience = new CompanySection(workList);
         resume.getSections().put(SectionType.EXPERIENCE, experience);
 
         List<Company> eduList = new ArrayList<>();
@@ -111,7 +111,7 @@ public class ResumeTestData {
                 "Аспирантура (программист С, С++)",
                 null);
         eduList.add(itmoSecond);
-        Section edu = new CompanySection(eduList);
+        AbstractSection edu = new CompanySection(eduList);
         resume.getSections().put(SectionType.EDUCATION, edu);
 
         System.out.println(resume);

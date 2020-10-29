@@ -49,7 +49,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return "\nCompany{" +
+        return "Company{" +
                 "homePage=" + homePage +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +

@@ -2,11 +2,11 @@ package com.urise.webapp.model;
 
 import java.util.Objects;
 
-public class WholeTextSection extends Section {
+public class TextSection extends AbstractSection {
 
     private final String textLine;
 
-    public WholeTextSection(String textLine) {
+    public TextSection(String textLine) {
         this.textLine = textLine;
     }
 
@@ -14,7 +14,7 @@ public class WholeTextSection extends Section {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WholeTextSection that = (WholeTextSection) o;
+        TextSection that = (TextSection) o;
         return Objects.equals(textLine, that.textLine);
     }
 
