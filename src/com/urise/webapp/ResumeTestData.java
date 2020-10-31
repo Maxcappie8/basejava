@@ -51,66 +51,65 @@ public class ResumeTestData {
         resume.getSections().put(SectionType.QUALIFICATIONS, qualifications);
 
         List<Company> workList = new ArrayList<>();
+        List<Company.Position> luxoftPosition = new ArrayList<>();
+        luxoftPosition.add(new Company.Position(
+                LocalDate.of(2010, 12, 1),
+                LocalDate.of(2012, 4, 1),
+                "Ведущий программист",
+                "Участие в проекте Deutsche Bank CRM (WebLogic, Hibernate, Spring, Spring MVC, SmartGWT, GWT, Jasper, Oracle). Реализация клиентской и серверной части CRM. Реализация RIA-приложения для администрирования, мониторинга и анализа результатов в области алгоритмического трейдинга. JPA, Spring, Spring-MVC, GWT, ExtGWT (GXT), Highstock, Commet, HTML5."
+        ));
         Company luxoft = new Company(
                 "Luxoft (Deutsche Bank)",
                 "http://www.luxoft.ru/",
-                LocalDate.of(2010, 12, 1),
-                LocalDate.of(2012,4,1),
-                "Ведущий программист",
-                "Участие в проекте Deutsche Bank CRM (WebLogic, Hibernate, Spring, Spring MVC, SmartGWT, GWT, Jasper, Oracle). Реализация клиентской и серверной части CRM. Реализация RIA-приложения для администрирования, мониторинга и анализа результатов в области алгоритмического трейдинга. JPA, Spring, Spring-MVC, GWT, ExtGWT (GXT), Highstock, Commet, HTML5.");
+                luxoftPosition);
         workList.add(luxoft);
+        List<Company.Position> ritPosition = new ArrayList<>();
+        ritPosition.add(new Company.Position(
+                LocalDate.of(2012, 4, 1),
+                LocalDate.of(2014, 10, 1),
+                "Java архитектор",
+                "Организация процесса разработки системы ERP для разных окружений: релизная политика, версионирование, ведение CI (Jenkins), миграция базы (кастомизация Flyway), конфигурирование системы (pgBoucer, Nginx), AAA via SSO. Архитектура БД и серверной части системы. Разработка интергационных сервисов: CMIS, BPMN2, 1C (WebServices), сервисов общего назначения (почта, экспорт в pdf, doc, html). Интеграция Alfresco JLAN для online редактирование из браузера документов MS Office. Maven + plugin development, Ant, Apache Commons, Spring security, Spring MVC, Tomcat,WSO2, xcmis, OpenCmis, Bonita, Python scripting, Unix shell remote scripting via ssh tunnels, PL/Python"
+        ));
         Company rit = new Company(
                 "RIT Center",
-                null,
-                LocalDate.of(2012, 4, 1),
-                LocalDate.of(2014,10,1),
-                "Java архитектор",
-                "Организация процесса разработки системы ERP для разных окружений: релизная политика, версионирование, ведение CI (Jenkins), миграция базы (кастомизация Flyway), конфигурирование системы (pgBoucer, Nginx), AAA via SSO. Архитектура БД и серверной части системы. Разработка интергационных сервисов: CMIS, BPMN2, 1C (WebServices), сервисов общего назначения (почта, экспорт в pdf, doc, html). Интеграция Alfresco JLAN для online редактирование из браузера документов MS Office. Maven + plugin development, Ant, Apache Commons, Spring security, Spring MVC, Tomcat,WSO2, xcmis, OpenCmis, Bonita, Python scripting, Unix shell remote scripting via ssh tunnels, PL/Python");
+                null, ritPosition);
         workList.add(rit);
-        Company wrike = new Company(
-                "Wrike",
-                "https://www.wrike.com/",
-                LocalDate.of(2014, 10, 1),
-                LocalDate.of(2016,1,1),
-                "Старший разработчик (backend)",
-                "Проектирование и разработка онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, MyBatis, Guava, Vaadin, PostgreSQL, Redis). Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO.");
-        workList.add(wrike);
-        Company javaops = new Company(
-                "Java Online Projects",
-                "https://javaops.ru/",
-                LocalDate.of(2013, 10, 1),
-                null,
-                "Автор проекта",
-                "Создание, организация и проведение Java онлайн проектов и стажировок.");
-        workList.add(javaops);
         AbstractSection experience = new CompanySection(workList);
         resume.getSections().put(SectionType.EXPERIENCE, experience);
 
         List<Company> eduList = new ArrayList<>();
+        List<Company.Position> mftiPosition = new ArrayList<>();
+        mftiPosition.add(new Company.Position(
+                LocalDate.of(1984, 9, 1),
+                LocalDate.of(1987, 6, 1),
+                "Закончил с отличием",
+                null
+        ));
         Company mfti = new Company(
                 "Заочная физико-техническая школа при МФТИ",
                 "http://www.school.mipt.ru/",
-                LocalDate.of(1984, 9, 1),
-                LocalDate.of(1987,6,1),
-                "Закончил с отличием",
-                null);
+                mftiPosition
+                );
         eduList.add(mfti);
+        List<Company.Position> itmoPosition = new ArrayList<>();
+        itmoPosition.add(new Company.Position(
+                LocalDate.of(1987, 9, 1),
+                LocalDate.of(1993, 7, 1),
+                "Инженер (программист Fortran, C)",
+                null
+        ));
+        itmoPosition.add(new Company.Position(
+                LocalDate.of(1993, 9, 1),
+                LocalDate.of(1996, 7, 1),
+                "Аспирантура (программист С, С++)",
+                null
+        ));
         Company itmo = new Company(
                 "Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики",
                 "https://itmo.ru/ru/",
-                LocalDate.of(1987, 9, 1),
-                LocalDate.of(1993,7,1),
-                "Инженер (программист Fortran, C)",
-                null);
+                itmoPosition
+                );
         eduList.add(itmo);
-        Company itmoSecond = new Company(
-                "Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики",
-                "https://itmo.ru/ru/",
-                LocalDate.of(1993, 9, 1),
-                LocalDate.of(1996,7,1),
-                "Аспирантура (программист С, С++)",
-                null);
-        eduList.add(itmoSecond);
         AbstractSection edu = new CompanySection(eduList);
         resume.getSections().put(SectionType.EDUCATION, edu);
 
