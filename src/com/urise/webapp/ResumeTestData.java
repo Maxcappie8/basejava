@@ -8,20 +8,20 @@ import java.util.List;
 
 public class ResumeTestData {
 
-    public static void main(String[] args) {
-        Resume resume = new Resume("max");
+    public static Resume createNewResume(String uuid, String fullName) {
 
-        resume.getContacts().put(ContactType.PHONE_MOBILE, new WebLink("+7(921) 855-0482", null));
-        resume.getContacts().put(ContactType.SKYPE, new WebLink("grigory.kislin", "skype:grigory.kislin"));
-        resume.getContacts().put(ContactType.EMAIL, new WebLink("gkislin@yandex.ru", "gkislin@yandex.ru"));
-        resume.getContacts().put(ContactType.LINKEDIN, new WebLink("Профиль LinkedIn", "https://www.linkedin.com/in/gkislin"));
+        Resume newResume = new Resume(uuid, fullName);
 
+        newResume.getContacts().put(ContactType.PHONE_MOBILE, new WebLink("+7(921) 855-0482", null));
+        newResume.getContacts().put(ContactType.SKYPE, new WebLink("grigory.kislin", "skype:grigory.kislin"));
+        newResume.getContacts().put(ContactType.EMAIL, new WebLink("gkislin@yandex.ru", "gkislin@yandex.ru"));
+        newResume.getContacts().put(ContactType.LINKEDIN, new WebLink("Профиль LinkedIn", "https://www.linkedin.com/in/gkislin"));
 
         TextSection objective = new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям");
-        resume.getSections().put(SectionType.OBJECTIVE, objective);
+        newResume.getSections().put(SectionType.OBJECTIVE, objective);
 
         TextSection personal = new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. Пурист кода и архитектуры.");
-        resume.getSections().put(SectionType.PERSONAL, personal);
+        newResume.getSections().put(SectionType.PERSONAL, personal);
 
         List<String> achievementList = new ArrayList<>();
         achievementList.add("С 2013 года: разработка проектов \"Разработка Web приложения\",\"Java Enterprise\", \"Многомодульный maven. Многопоточность. XML (JAXB/StAX). Веб сервисы (JAX-RS/SOAP). Удаленное взаимодействие (JMS/AKKA)\". Организация онлайн стажировок и ведение проектов. Более 1000 выпускников.");
@@ -31,7 +31,7 @@ public class ResumeTestData {
         achievementList.add("Создание JavaEE фреймворка для отказоустойчивого взаимодействия слабо-связанных сервисов (SOA-base архитектура, JAX-WS, JMS, AS Glassfish). Сбор статистики сервисов и информации о состоянии через систему мониторинга Nagios. Реализация онлайн клиента для администрирования и мониторинга системы по JMX (Jython/ Django).");
         achievementList.add("Реализация протоколов по приему платежей всех основных платежных системы России (Cyberplat, Eport, Chronopay, Сбербанк), Белоруcсии(Erip, Osmp) и Никарагуа.");
         ListSection achievement = new ListSection(achievementList);
-        resume.getSections().put(SectionType.ACHIEVEMENT, achievement);
+        newResume.getSections().put(SectionType.ACHIEVEMENT, achievement);
 
         List<String> qualificationsList = new ArrayList<>();
         qualificationsList.add("JEE AS: GlassFish (v2.1, v3), OC4J, JBoss, Tomcat, Jetty, WebLogic, WSO2");
@@ -48,7 +48,7 @@ public class ResumeTestData {
         qualificationsList.add("Отличное знание и опыт применения концепций ООП, SOA, шаблонов проектрирования, архитектурных шаблонов, UML, функционального программирования");
         qualificationsList.add("Родной русский, английский \"upper intermediate\"");
         AbstractSection qualifications = new ListSection(qualificationsList);
-        resume.getSections().put(SectionType.QUALIFICATIONS, qualifications);
+        newResume.getSections().put(SectionType.QUALIFICATIONS, qualifications);
 
         List<Company> workList = new ArrayList<>();
         List<Company.Position> luxoftPosition = new ArrayList<>();
@@ -75,7 +75,7 @@ public class ResumeTestData {
                 null, ritPosition);
         workList.add(rit);
         AbstractSection experience = new CompanySection(workList);
-        resume.getSections().put(SectionType.EXPERIENCE, experience);
+        newResume.getSections().put(SectionType.EXPERIENCE, experience);
 
         List<Company> eduList = new ArrayList<>();
         List<Company.Position> mftiPosition = new ArrayList<>();
@@ -89,7 +89,7 @@ public class ResumeTestData {
                 "Заочная физико-техническая школа при МФТИ",
                 "http://www.school.mipt.ru/",
                 mftiPosition
-                );
+        );
         eduList.add(mfti);
         List<Company.Position> itmoPosition = new ArrayList<>();
         itmoPosition.add(new Company.Position(
@@ -108,11 +108,11 @@ public class ResumeTestData {
                 "Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики",
                 "https://itmo.ru/ru/",
                 itmoPosition
-                );
+        );
         eduList.add(itmo);
         AbstractSection edu = new CompanySection(eduList);
-        resume.getSections().put(SectionType.EDUCATION, edu);
+        newResume.getSections().put(SectionType.EDUCATION, edu);
 
-        System.out.println(resume);
+        return newResume;
     }
 }

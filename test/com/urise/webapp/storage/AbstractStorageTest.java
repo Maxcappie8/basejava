@@ -6,11 +6,11 @@ import com.urise.webapp.model.Resume;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static com.urise.webapp.ResumeTestData.createNewResume;
 import static org.junit.Assert.assertEquals;
 
 public abstract class AbstractStorageTest {
@@ -20,9 +20,9 @@ public abstract class AbstractStorageTest {
     private final String UUID_2 = "uuid_#2";
     private final String UUID_3 = "uuid_#3";
     private final String UUID_4 = "uuid_#4";
-    private final Resume r1 = new Resume(UUID_1, "Alex Will");
-    private final Resume r2 = new Resume(UUID_2, "Borat Kaz");
-    private final Resume r3 = new Resume(UUID_3, "Cindy Kraft");
+    private final Resume r1 = createNewResume(UUID_1, "Alex Will");
+    private final Resume r2 = createNewResume(UUID_2, "Borat Kaz");
+    private final Resume r3 = createNewResume(UUID_3, "Cindy Kraft");
 
     protected AbstractStorageTest(Storage storage) {
         this.storage = storage;
@@ -44,7 +44,7 @@ public abstract class AbstractStorageTest {
 
     @Test
     public void save() {
-        Resume r4 = new Resume(UUID_4, "Donald Duck");
+        Resume r4 = createNewResume(UUID_4, "Donald Duck");
         storage.save(r4);
         assertEquals(4, storage.size());
         assertEquals(r4, storage.get(UUID_4));
@@ -52,13 +52,13 @@ public abstract class AbstractStorageTest {
 
     @Test(expected = ExistStorageException.class)
     public void saveAlreadyExist() {
-        Resume r4 = new Resume(UUID_1, "Alex Will");
+        Resume r4 = createNewResume(UUID_1, "Alex Will");
         storage.save(r4);
     }
 
     @Test
     public void update() {
-        Resume r3 = new Resume(UUID_3, "Cindy Kraft");
+        Resume r3 = createNewResume(UUID_3, "Cindy Kraft");
         storage.update(r3);
         assertEquals(3, storage.size());
         assertEquals(r3, storage.get(UUID_3));
@@ -66,7 +66,7 @@ public abstract class AbstractStorageTest {
 
     @Test(expected = NotExistStorageException.class)
     public void updateNotExist() {
-        Resume r4 = new Resume(UUID_4);
+        Resume r4 = createNewResume(UUID_4, "Rick Mock");
         storage.update(r4);
     }
 
