@@ -46,7 +46,7 @@ public class ListStorage extends AbstractStorage<Integer> {
 
     @Override
     protected boolean searchKey(Integer key) {
-        return key != null && key >= 0;
+        return key != null;
     }
 
     @Override

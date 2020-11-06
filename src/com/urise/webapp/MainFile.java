@@ -23,7 +23,7 @@ public class MainFile {
     }
 
     public static void main(String[] args) {
-        MainFile mainFile = new MainFile("D:\\JavaProjects\\homework\\github\\basejava");
+        MainFile mainFile = new MainFile(".\\");
         File file = new File(mainFile.rootPath);
         mainFile.printFileName(file);
     }
