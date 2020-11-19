@@ -1,8 +1,9 @@
 package com.urise.webapp.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class WebLink {
+public class WebLink implements Serializable {
 
     private final String name;
 
