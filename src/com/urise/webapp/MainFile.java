@@ -10,7 +10,12 @@ public class MainFile {
         this.rootPath = rootPath;
     }
 
-    private void printFileName(File file, String initialIndent) {
+    public static void main(String[] args) {
+        File file = new File(".\\");
+        printFileName(file, "");
+    }
+
+    private static void printFileName(File file, String initialIndent) {
 
         System.out.println(initialIndent + "|" + file.getName());
         File[] files = file.listFiles();
