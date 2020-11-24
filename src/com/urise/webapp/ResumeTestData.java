@@ -12,10 +12,10 @@ public class ResumeTestData {
 
         Resume newResume = new Resume(uuid, fullName);
 
-        newResume.getContacts().put(ContactType.PHONE_MOBILE, new WebLink("+7(921) 855-0482", null));
-        newResume.getContacts().put(ContactType.SKYPE, new WebLink("grigory.kislin", "skype:grigory.kislin"));
-        newResume.getContacts().put(ContactType.EMAIL, new WebLink("gkislin@yandex.ru", "gkislin@yandex.ru"));
-        newResume.getContacts().put(ContactType.LINKEDIN, new WebLink("Профиль LinkedIn", "https://www.linkedin.com/in/gkislin"));
+        newResume.getContacts().put(ContactType.PHONE_MOBILE, "+7(921) 855-0482");
+        newResume.getContacts().put(ContactType.SKYPE,"grigory.kislin");
+        newResume.getContacts().put(ContactType.EMAIL, "gkislin@yandex.ru");
+        newResume.getContacts().put(ContactType.LINKEDIN, "Профиль LinkedIn");
 
         TextSection objective = new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям");
         newResume.getSections().put(SectionType.OBJECTIVE, objective);

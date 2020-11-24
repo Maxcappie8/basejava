@@ -12,7 +12,7 @@ public class Resume implements Comparable<Resume>, Serializable {
 
     private final String fullName;
 
-    private final Map<ContactType, WebLink> contacts = new EnumMap<>(ContactType.class);
+    private final Map<ContactType, String> contacts = new EnumMap<>(ContactType.class);
 
     private final Map<SectionType, AbstractSection> sections = new EnumMap<>(SectionType.class);
 
@@ -25,7 +25,7 @@ public class Resume implements Comparable<Resume>, Serializable {
         this.fullName = fullName;
     }
 
-    public Map<ContactType, WebLink> getContacts() {
+    public Map<ContactType, String> getContacts() {
         return contacts;
     }
 
@@ -33,7 +33,7 @@ public class Resume implements Comparable<Resume>, Serializable {
         return sections;
     }
 
-    public WebLink getContact(ContactType type) {
+    public String getContact(ContactType type) {
         return contacts.get(type);
     }
 
