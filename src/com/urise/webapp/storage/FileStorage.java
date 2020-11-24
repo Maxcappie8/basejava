@@ -36,10 +36,10 @@ public class FileStorage extends AbstractStorage<File> {
     protected void saveResume(File file, Resume resume) {
         try {
             file.createNewFile();
-            serializer.doWrite(resume, new BufferedOutputStream(new FileOutputStream(file)));
         } catch (IOException e) {
             throw new StorageException("IO ERROR", file.getName(), e);
         }
+        updateResume(file, resume);
     }
 
     @Override
@@ -73,34 +73,33 @@ public class FileStorage extends AbstractStorage<File> {
     @Override
     protected List<Resume> copyAll() {
         List<Resume> resumeList = new ArrayList<>();
-        File[] files = directory.listFiles();
-        if (files != null) {
-            for (File file : files) {
-                try {
-                    resumeList.add(serializer.doRead(new BufferedInputStream(new FileInputStream(file))));
-                } catch (IOException e) {
-                    throw new StorageException("File read error", file.getName(), e);
-                }
-            }
+        for (File file : getFiles()) {
+            resumeList.add(getResume(file));
         }
         return resumeList;
     }
 
     @Override
     public void clear() {
-        for (File file : Objects.requireNonNull(directory.listFiles()))
-            if (!file.isDirectory()) {
-                file.delete();
-            }
+        for (File file : getFiles()) {
+            deleteResume(file);
+        }
     }
 
     @Override
     public int size() {
-        int s = 0;
-        for (File file : directory.listFiles())
-            if (file.isFile()) {
-                s++;
-            }
-        return s;
+        String[] list = directory.list();
+        if (list == null) {
+            throw new StorageException("Directory read error");
+        }
+        return list.length;
+    }
+
+    private File[] getFiles() {
+        File[] files = directory.listFiles();
+        if (files == null) {
+            throw new StorageException("Directory read error");
+        }
+        return files;
     }
 }
