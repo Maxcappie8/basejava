@@ -42,10 +42,10 @@ public class PathStorage extends AbstractStorage<Path> {
     protected void saveResume(Path path, Resume resume) {
         try {
             Files.createFile(path);
-            serializer.doWrite(resume, new BufferedOutputStream(Files.newOutputStream(path)));
         } catch (IOException e) {
             throw new StorageException("IO ERROR", path.toString(), e);
         }
+        updateResume(path,resume);
     }
 
     @Override
@@ -82,21 +82,20 @@ public class PathStorage extends AbstractStorage<Path> {
 
     @Override
     public void clear() {
-        toStream().forEach(this::deleteResume);
+        getFilesListStream().forEach(this::deleteResume);
     }
 
     @Override
     public int size() {
-        return (int) toStream().count();
+        return (int) getFilesListStream().count();
     }
 
     @Override
     protected List<Resume> copyAll() {
-        List<Resume> listAllResume = toStream().map(this::getResume).collect(Collectors.toList());
-        return listAllResume;
+        return getFilesListStream().map(this::getResume).collect(Collectors.toList());
     }
 
-    private Stream<Path> toStream() {
+    private Stream<Path> getFilesListStream() {
         try {
             return Files.list(directory);
         } catch (IOException e) {
