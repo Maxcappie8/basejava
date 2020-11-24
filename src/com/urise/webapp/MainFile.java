@@ -10,21 +10,18 @@ public class MainFile {
         this.rootPath = rootPath;
     }
 
-    private void printFileName(File file) {
-        System.out.println(file.getAbsolutePath());
+    private void printFileName(File file, String initialIndent) {
+
+        System.out.println(initialIndent + "|" + file.getName());
         File[] files = file.listFiles();
-        for (File f : files) {
-            if (f.isFile()) {
-                System.out.println("\t - " + f.getName());
-            } else {
-                printFileName(f);
+        if(files != null) {
+            for (File f : files) {
+                if (f.isFile()) {
+                    System.out.println(initialIndent + "|--" + f.getName());
+                } else {
+                    printFileName(f,initialIndent + "  ");
+                }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        MainFile mainFile = new MainFile(".\\");
-        File file = new File(mainFile.rootPath);
-        mainFile.printFileName(file);
     }
 }
