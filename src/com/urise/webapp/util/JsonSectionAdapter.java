@@ -1,11 +1,10 @@
 package com.urise.webapp.util;
 
 import com.google.gson.*;
-import com.urise.webapp.model.Resume;
 
 import java.lang.reflect.Type;
 
-public class JsonSectionAdapter <T> implements JsonSerializer<T>, JsonDeserializer<T> {
+public class JsonSectionAdapter<T> implements JsonSerializer<T>, JsonDeserializer<T> {
     private static final String CLASSNAME = "CLASSNAME";
     private static final String INSTANCE = "INSTANCE";
 
