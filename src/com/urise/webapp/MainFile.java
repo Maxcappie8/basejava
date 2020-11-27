@@ -2,6 +2,7 @@ package com.urise.webapp;
 
 import java.io.File;
 
+@Deprecated
 public class MainFile {
 
     private final String rootPath;

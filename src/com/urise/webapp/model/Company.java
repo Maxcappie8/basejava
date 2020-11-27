@@ -1,15 +1,24 @@
 package com.urise.webapp.model;
 
+import com.urise.webapp.util.LocalDateAdapter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Company implements Serializable {
 
-    private final WebLink homePage;
+    private WebLink homePage;
 
     private List<Position> positionsList;
+
+    public Company() {
+    }
 
     public Company(String name, String homePageLink, List<Position> positionsList) {
         Objects.requireNonNull(name, "name must not be null");
@@ -39,15 +48,21 @@ public class Company implements Serializable {
                 '}';
     }
 
+    @XmlAccessorType(XmlAccessType.FIELD)
     public static class Position implements Serializable {
 
-        private final LocalDate startDate;
+        @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+        private LocalDate startDate;
 
-        private final LocalDate endDate;
+        @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
+        private LocalDate endDate;
 
-        private final String title;
+        private String title;
 
-        private final String description;
+        private String description;
+
+        public Position() {
+        }
 
         public Position(LocalDate startDate, LocalDate endDate, String title, String description) {
             Objects.requireNonNull(startDate, "startDate must not be null");

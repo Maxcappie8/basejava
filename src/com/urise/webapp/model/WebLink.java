@@ -1,13 +1,19 @@
 package com.urise.webapp.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.io.Serializable;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class WebLink implements Serializable {
 
-    private final String name;
+    private String name;
 
-    private final String url;
+    private String url;
+
+    public WebLink() {
+    }
 
     public WebLink(String name, String url) {
         this.name = name;

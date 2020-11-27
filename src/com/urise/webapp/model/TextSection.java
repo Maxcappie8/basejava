@@ -1,10 +1,16 @@
 package com.urise.webapp.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class TextSection extends AbstractSection {
 
-    private final String textLine;
+    private String textLine;
+
+    public TextSection() {
+    }
 
     public TextSection(String textLine) {
         this.textLine = textLine;

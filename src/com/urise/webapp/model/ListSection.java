@@ -1,11 +1,17 @@
 package com.urise.webapp.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.List;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ListSection extends AbstractSection {
 
-    private final List<String> listContent;
+    private List<String> listContent;
+
+    public ListSection() {
+    }
 
     public ListSection(List<String> listContent) {
         this.listContent = listContent;
