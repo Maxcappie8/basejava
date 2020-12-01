@@ -57,6 +57,14 @@ public class Resume implements Comparable<Resume>, Serializable {
         return fullName;
     }
 
+    public void addContact(ContactType valueOf, String readUTF) {
+        contacts.put(valueOf, readUTF);
+    }
+
+    public void addSection(SectionType valueOf, AbstractSection readUTF) {
+        sections.put(valueOf, readUTF);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -88,4 +96,5 @@ public class Resume implements Comparable<Resume>, Serializable {
         int compare = fullName.compareTo(resume.fullName);
         return compare != 0 ? compare : uuid.compareTo(resume.getUuid());
     }
+
 }

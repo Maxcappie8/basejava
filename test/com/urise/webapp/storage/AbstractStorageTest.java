@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 public abstract class AbstractStorageTest {
 
-    protected static final File STORAGE_DIR = new File("D:\\JavaProjects\\homework\\github\\basejava\\storage");
+    protected static final File STORAGE_DIR = new File(".\\storage");
 
     Storage storage;
     private final String UUID_1 = "uuid_#1";
@@ -24,7 +24,7 @@ public abstract class AbstractStorageTest {
     private final String UUID_3 = "uuid_#3";
     private final String UUID_4 = "uuid_#4";
     private final Resume r1 = createNewResume(UUID_1, "Alex Will");
-    private final Resume r2 = createNewResume(UUID_2, "Borat Kaz");
+    private final Resume r2 = createNewResume(UUID_2, "Borat Kazakh");
     private final Resume r3 = createNewResume(UUID_3, "Cindy Kraft");
 
     protected AbstractStorageTest(Storage storage) {

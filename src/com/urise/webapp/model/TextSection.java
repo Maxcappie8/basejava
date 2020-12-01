@@ -16,6 +16,10 @@ public class TextSection extends AbstractSection {
         this.textLine = textLine;
     }
 
+    public String getTextLine() {
+        return textLine;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

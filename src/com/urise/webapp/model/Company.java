@@ -20,10 +20,23 @@ public class Company implements Serializable {
     public Company() {
     }
 
+    public Company(WebLink homePage, List<Position> positionsList) {
+        this.homePage = homePage;
+        this.positionsList = positionsList;
+    }
+
     public Company(String name, String homePageLink, List<Position> positionsList) {
         Objects.requireNonNull(name, "name must not be null");
         this.positionsList = positionsList;
         this.homePage = new WebLink(name, homePageLink);
+    }
+
+    public WebLink getHomePage() {
+        return homePage;
+    }
+
+    public List<Position> getPositionsList() {
+        return positionsList;
     }
 
     @Override
@@ -70,7 +83,23 @@ public class Company implements Serializable {
             this.startDate = startDate;
             this.endDate = endDate;
             this.title = title;
-            this.description = description;
+            this.description = (description != null) ? description : "";
+        }
+
+        public LocalDate getStartDate() {
+            return startDate;
+        }
+
+        public LocalDate getEndDate() {
+            return endDate;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getDescription() {
+            return description;
         }
 
         @Override
