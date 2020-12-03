@@ -37,8 +37,9 @@ public class DataStreamSerializer implements StreamSerializer {
                     case EXPERIENCE:
                     case EDUCATION:
                         writeElement(dataOutputStream, ((CompanySection) section).getCompanyList(), company -> {
-                            dataOutputStream.writeUTF(company.getHomePage().getName());
-                            dataOutputStream.writeUTF(company.getHomePage().getUrl());
+                            WebLink homePage = company.getHomePage();
+                            dataOutputStream.writeUTF(homePage.getName());
+                            dataOutputStream.writeUTF(homePage.getUrl());
                             writeElement(dataOutputStream, company.getPositionsList(), position -> {
                                 writeDate(dataOutputStream, position.getStartDate());
                                 writeDate(dataOutputStream, position.getEndDate());
@@ -49,13 +50,6 @@ public class DataStreamSerializer implements StreamSerializer {
                         break;
                 }
             });
-
-            Map<SectionType, AbstractSection> sections = resume.getSections();
-            dataOutputStream.writeInt(contacts.size());
-            for (Map.Entry<SectionType, AbstractSection> entry : sections.entrySet()) {
-                dataOutputStream.writeUTF(entry.getKey().name());
-                dataOutputStream.writeUTF(entry.getValue().toString());
-            }
         }
     }
 
